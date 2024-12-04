@@ -42,3 +42,31 @@
 #
 # -----------------------------------------------------------------------------
 # Напишите программу ниже:
+
+Purchase_price = float(input()) # Цена покупки облигации.
+Sale_price = float(input()) # Цена погашения облигации.
+Monthly_payment = float(input()) # Сумму разовой купонной выплаты.
+Period_of_payment = float(input()) # Периодичность выплаты купонов
+Brockerage_commission = float(input()) # Комиссию брокера (в процентах)
+Period_to_maturity = float(input()) # Период до погашения облигации
+
+# 1. Комиссия на покупку:
+commission = Purchase_price * (Brockerage_commission/100)
+
+# 2. Полная цена покупки:
+full_price = Purchase_price + commission
+
+# 3. Общий купонный доход:
+total_coupon_income = Monthly_payment * (Period_to_maturity/Period_of_payment)
+
+# 4. Общий доход до налогообложения:
+income_before_taxes = total_coupon_income + Sale_price - full_price
+
+# 5. Налог на доход:
+if total_coupon_income > 0:
+    income_taxes = total_coupon_income * 0.13
+else:
+    income_taxes = 0
+
+# 6. Чистая доходность (в процентах):
+net_yield = (income_before_taxes - income_taxes) / full_price*100
